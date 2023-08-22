@@ -14,10 +14,11 @@ class ExpancesList extends StatelessWidget {
     return ListView.builder(
       itemCount: expances.length,
       itemBuilder: (context, index) => Dismissible(
+        background: Container(color: Colors.red),
         onDismissed: (direction) {
           onRemoveExpance(expances[index]);
         },
-        key: ValueKey(expances[index]),
+        key: UniqueKey(),
         child: ExpanceItem(expances[index]),
       ),
     );
