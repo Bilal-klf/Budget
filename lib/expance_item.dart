@@ -12,8 +12,8 @@ class ExpanceItem extends StatelessWidget {
     return Card(
       child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-          child: Column(children: [
-            Text(expance.title),
+          child: Column(crossAxisAlignment : CrossAxisAlignment.start, children: [
+            Text(expance.title, style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 4),
             Row(
               children: [

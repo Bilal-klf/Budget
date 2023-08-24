@@ -135,8 +135,7 @@ class _ExpancesState extends State<Expances> {
       body: Column(children: [
         Text(
           "My list",
-          style: GoogleFonts.lato(
-              color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.titleLarge ,
         ),
         Expanded(
           child: mainContent,
