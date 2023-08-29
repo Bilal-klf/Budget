@@ -1,6 +1,7 @@
 import 'package:MyBudget/expances_list.dart';
 import 'package:MyBudget/models/expance.dart';
 import 'package:MyBudget/new_expance.dart';
+import 'package:MyBudget/widgets/chart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -35,6 +36,7 @@ class _ExpancesState extends State<Expances> {
 
   void _onAddNewExpance() {
     showModalBottomSheet(
+      useSafeArea: true,
       isScrollControlled: true,
       context: context,
       builder: (ctx) => Container(
@@ -100,11 +102,11 @@ class _ExpancesState extends State<Expances> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     Widget mainContent = Center(
       child: Container(
-
         child: const Row(
-
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -117,8 +119,7 @@ class _ExpancesState extends State<Expances> {
     );
     if (_registeredExpances.isNotEmpty) {
       mainContent = ExpancesList(
-            expances: _registeredExpances,
-            onRemoveExpance: _removeConfirmation);
+          expances: _registeredExpances, onRemoveExpance: _removeConfirmation);
     }
 
     return Scaffold(
@@ -132,15 +133,19 @@ class _ExpancesState extends State<Expances> {
         ],
       ),
       //backgroundColor: Colors.white,
-      body: Column(children: [
-        Text(
-          "My list",
-          style: Theme.of(context).textTheme.titleLarge ,
-        ),
-        Expanded(
-          child: mainContent,
-        ),
-      ]),
+      body: width < 600
+          ? Column(children: [
+              Chart(expances: _registeredExpances),
+              Expanded(
+                child: mainContent,
+              ),
+            ])
+          : Row(children: [
+              Expanded(child: Chart(expances: _registeredExpances)),
+              Expanded(
+                child: mainContent,
+              ),
+            ]),
     );
   }
 }

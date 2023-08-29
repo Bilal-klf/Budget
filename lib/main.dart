@@ -1,7 +1,7 @@
 import 'package:MyBudget/expances.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:flutter/services.dart';
 var kColorScheme =
     ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 37, 37, 51));
 
@@ -10,6 +10,8 @@ var kDarkColorSheme = ColorScheme.fromSeed(
     seedColor: const Color.fromARGB(255, 5, 99, 125));
 
 void main() {
+  //WidgetsFlutterBinding.ensureInitialized();
+  //SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown]).then((fn){});
   runApp(
     MaterialApp(
       darkTheme: ThemeData.dark().copyWith(
@@ -47,7 +49,7 @@ void main() {
                   color: kColorScheme.onSecondaryContainer),
             ),
       ),
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.system,
       home: const Expances(),
     ),
   );

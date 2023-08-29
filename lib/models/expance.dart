@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:uuid/uuid.dart';
 import 'package:intl/intl.dart';
+import 'package:uuid/uuid.dart';
+
 const uuid = Uuid();
 final formmater = DateFormat.yMd();
+
 enum Category { food, travel, leisure, work }
 
-const catergoryIcons = {
+const categoryIcons = {
   Category.food: Icons.fastfood,
   Category.travel: Icons.card_travel_rounded,
   Category.leisure: Icons.movie,
@@ -28,5 +30,22 @@ class Expance {
 
   String get formattedDate {
     return formmater.format(date);
+  }
+}
+
+class ExpanceBucket {
+  ExpanceBucket({required this.category, required this.expances});
+  ExpanceBucket.allCategories(this.expances) : this.category = Category.work;
+  ExpanceBucket.forCategory(List<Expance> allExpances, this.category) : expances = allExpances.where((expance) => expance.category == category).toList();
+
+  final Category category;
+  final List<Expance> expances;
+
+  double get totalExpances{
+    double sum = 0;
+    for (final expance in expances){
+      sum = sum + expance.amount;
+    }
+    return sum;
   }
 }

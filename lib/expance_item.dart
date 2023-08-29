@@ -20,7 +20,7 @@ class ExpanceItem extends StatelessWidget {
                 Text('\$${expance.amount.toStringAsFixed(2)}'),
                 const Spacer(),
                 Row(children: [
-                  Icon(catergoryIcons[expance.category]),
+                  Icon(categoryIcons[expance.category]),
                   const SizedBox(width: 8),
                   Text(expance.formattedDate)
                 ]),
