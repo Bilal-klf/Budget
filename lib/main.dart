@@ -49,7 +49,7 @@ void main() {
                   color: kColorScheme.onSecondaryContainer),
             ),
       ),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       home: const Expances(),
     ),
   );

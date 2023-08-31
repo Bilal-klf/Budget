@@ -2,6 +2,7 @@ import 'package:MyBudget/expances_list.dart';
 import 'package:MyBudget/models/expance.dart';
 import 'package:MyBudget/new_expance.dart';
 import 'package:MyBudget/widgets/chart.dart';
+import 'package:MyBudget/widgets/total_expances.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -135,17 +136,74 @@ class _ExpancesState extends State<Expances> {
       //backgroundColor: Colors.white,
       body: width < 600
           ? Column(children: [
+              Container(
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                height: 120,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Expences",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TotalExpances(
+                            totalExpances: _registeredExpances,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              //Expanded(child: Chart(expances: _registeredExpances)),
               Chart(expances: _registeredExpances),
               Expanded(
                 child: mainContent,
               ),
             ])
           : Row(children: [
+              Expanded(
+                  child: TotalExpances(
+                totalExpances: _registeredExpances,
+              )),
               Expanded(child: Chart(expances: _registeredExpances)),
               Expanded(
                 child: mainContent,
               ),
             ]),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        selectedItemColor: Colors.cyan,
+        selectedLabelStyle: new TextStyle(color : Colors.cyan),
+        unselectedLabelStyle: TextStyle(color: Colors.white),
+        unselectedItemColor: Colors.white,
+        items: [
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.dashboard_outlined, color: Colors.white,),
+            label: 'Home',
+            activeIcon: new Icon(Icons.dashboard_outlined, color: Colors.cyan,),
+
+          ),
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.help_outline_outlined, color: Colors.white,),
+            activeIcon: new Icon(Icons.help_outline_outlined, color: Colors.cyan,),
+            label: "help_icon_label",
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.message, color: Colors.white,),
+              activeIcon: new Icon(Icons.message, color: Colors.cyan,),
+              label: "messages_icon_label"
+          )
+        ],
+      ),
     );
   }
 }

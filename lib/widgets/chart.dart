@@ -16,6 +16,14 @@ class Chart extends StatelessWidget {
     ];
   }
 
+  double get totalExpences {
+    double total = 0;
+    for (final bucket in buckets) {
+      total += bucket.totalExpances;
+    }
+    return total;
+  }
+
   double get maxTotalExpense {
     double maxTotalExpense = 0;
 
@@ -33,13 +41,13 @@ class Chart extends StatelessWidget {
     final isDarkMode =
         MediaQuery.of(context).platformBrightness == Brightness.dark;
     return Container(
-      margin: const EdgeInsets.all(16),
+      margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.symmetric(
         vertical: 16,
         horizontal: 8,
       ),
       width: double.infinity,
-      height: 180,
+      height: 100,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         gradient: LinearGradient(
@@ -61,7 +69,7 @@ class Chart extends StatelessWidget {
                   ChartBar(
                     fill: bucket.totalExpances == 0
                         ? 0
-                        : bucket.totalExpances / maxTotalExpense,
+                        : bucket.totalExpances / totalExpences,
                   )
               ],
             ),
@@ -73,14 +81,22 @@ class Chart extends StatelessWidget {
                   (bucket) => Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4),
-                      child: Icon(
-                        categoryIcons[bucket.category],
-                        color: isDarkMode
-                            ? Theme.of(context).colorScheme.secondary
-                            : Theme.of(context)
-                                .colorScheme
-                                .primary
-                                .withOpacity(0.8),
+                      child: Column(
+                        children: [
+                          Text(
+                            '\$${bucket.totalExpances.toStringAsFixed(2)}',
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                          Icon(
+                            categoryIcons[bucket.category],
+                            color: isDarkMode
+                                ? Theme.of(context).colorScheme.secondary
+                                : Theme.of(context)
+                                    .colorScheme
+                                    .primary
+                                    .withOpacity(0.8),
+                          ),
+                        ],
                       ),
                     ),
                   ),
