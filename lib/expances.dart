@@ -1,8 +1,10 @@
+import 'package:MyBudget/contact.dart';
 import 'package:MyBudget/expances_list.dart';
 import 'package:MyBudget/models/expance.dart';
 import 'package:MyBudget/new_expance.dart';
 import 'package:MyBudget/widgets/chart.dart';
 import 'package:MyBudget/widgets/total_expances.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -28,6 +30,8 @@ class _ExpancesState extends State<Expances> {
         date: DateTime.now(),
         category: Category.travel)
   ];
+
+
 
   void _addNewExpance(Expance expance) {
     setState(() {
@@ -124,6 +128,27 @@ class _ExpancesState extends State<Expances> {
     }
 
     return Scaffold(
+      bottomNavigationBar: ConvexAppBar(height: 50,onTap: (index) => print(index) ,items: const [
+        TabItem(
+          icon: Icon(
+            Icons.home,
+            color: Colors.white,
+          ),
+          title: "home",
+          activeIcon: Icon(
+            Icons.home_sharp,
+            color: Colors.blue,
+          ),
+        ),
+        TabItem(
+            icon: Icon(Icons.message, color: Colors.white),
+            title: "contact",
+            activeIcon: Icon(Icons.message, color: Colors.blue)),
+        TabItem(
+            icon: Icon(Icons.account_circle, color: Colors.white),
+            title: "profile",
+            activeIcon: Icon(Icons.account_circle_rounded, color: Colors.blue))
+      ]),
       appBar: AppBar(
         title: const Text("Mes dépences"),
         actions: [
@@ -143,11 +168,11 @@ class _ExpancesState extends State<Expances> {
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         "Expences",
                         style: TextStyle(color: Colors.white),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
@@ -178,7 +203,7 @@ class _ExpancesState extends State<Expances> {
                 child: mainContent,
               ),
             ]),
-      bottomNavigationBar: BottomNavigationBar(
+      /*bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         selectedItemColor: Colors.cyan,
@@ -187,23 +212,24 @@ class _ExpancesState extends State<Expances> {
         unselectedItemColor: Colors.white,
         items: [
           BottomNavigationBarItem(
-            icon: new Icon(Icons.dashboard_outlined, color: Colors.white,),
+            icon: Icon(Icons.dashboard_outlined, color: Colors.blue,),
             label: 'Home',
             activeIcon: new Icon(Icons.dashboard_outlined, color: Colors.cyan,),
 
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.help_outline_outlined, color: Colors.white,),
+            icon: new Icon(Icons.help_outline_outlined, color: Colors.blue,),
             activeIcon: new Icon(Icons.help_outline_outlined, color: Colors.cyan,),
             label: "help_icon_label",
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.message, color: Colors.white,),
+              icon: Icon(Icons.message, color: Colors.blue,),
               activeIcon: new Icon(Icons.message, color: Colors.cyan,),
               label: "messages_icon_label"
           )
         ],
-      ),
+      ),*/
+
     );
   }
 }
