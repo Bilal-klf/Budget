@@ -84,7 +84,7 @@ class Chart extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            '\$${bucket.totalExpances.toStringAsFixed(2)}',
+                            '${bucket.totalExpances.toStringAsFixed(2)+"\€"}',
                             style: const TextStyle(fontSize: 12),
                           ),
                           Icon(

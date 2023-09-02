@@ -128,27 +128,6 @@ class _ExpancesState extends State<Expances> {
     }
 
     return Scaffold(
-      bottomNavigationBar: ConvexAppBar(height: 50,onTap: (index) => print(index) ,items: const [
-        TabItem(
-          icon: Icon(
-            Icons.home,
-            color: Colors.white,
-          ),
-          title: "home",
-          activeIcon: Icon(
-            Icons.home_sharp,
-            color: Colors.blue,
-          ),
-        ),
-        TabItem(
-            icon: Icon(Icons.message, color: Colors.white),
-            title: "contact",
-            activeIcon: Icon(Icons.message, color: Colors.blue)),
-        TabItem(
-            icon: Icon(Icons.account_circle, color: Colors.white),
-            title: "profile",
-            activeIcon: Icon(Icons.account_circle_rounded, color: Colors.blue))
-      ]),
       appBar: AppBar(
         title: const Text("Mes dépences"),
         actions: [
@@ -193,43 +172,18 @@ class _ExpancesState extends State<Expances> {
                 child: mainContent,
               ),
             ])
-          : Row(children: [
-              Expanded(
-                  child: TotalExpances(
-                totalExpances: _registeredExpances,
-              )),
-              Expanded(child: Chart(expances: _registeredExpances)),
-              Expanded(
-                child: mainContent,
-              ),
-            ]),
-      /*bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        selectedItemColor: Colors.cyan,
-        selectedLabelStyle: new TextStyle(color : Colors.cyan),
-        unselectedLabelStyle: TextStyle(color: Colors.white),
-        unselectedItemColor: Colors.white,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard_outlined, color: Colors.blue,),
-            label: 'Home',
-            activeIcon: new Icon(Icons.dashboard_outlined, color: Colors.cyan,),
-
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.help_outline_outlined, color: Colors.blue,),
-            activeIcon: new Icon(Icons.help_outline_outlined, color: Colors.cyan,),
-            label: "help_icon_label",
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.message, color: Colors.blue,),
-              activeIcon: new Icon(Icons.message, color: Colors.cyan,),
-              label: "messages_icon_label"
-          )
-        ],
-      ),*/
-
+          : Row(
+              children: [
+                Expanded(
+                    child: TotalExpances(
+                  totalExpances: _registeredExpances,
+                )),
+                Expanded(child: Chart(expances: _registeredExpances)),
+                Expanded(
+                  child: mainContent,
+                ),
+              ],
+            ),
     );
   }
 }

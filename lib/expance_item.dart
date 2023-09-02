@@ -17,7 +17,7 @@ class ExpanceItem extends StatelessWidget {
             const SizedBox(height: 4),
             Row(
               children: [
-                Text('\$${expance.amount.toStringAsFixed(2)}'),
+                Text('${expance.amount.toStringAsFixed(2)+"\€"}'),
                 const Spacer(),
                 Row(children: [
                   Icon(categoryIcons[expance.category]),

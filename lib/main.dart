@@ -1,4 +1,5 @@
 import 'package:MyBudget/expances.dart';
+import 'package:MyBudget/my_home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/services.dart';
@@ -50,7 +51,7 @@ void main() {
             ),
       ),
       themeMode: ThemeMode.light,
-      home: const Expances(),
+      home: MyHomePage(),
     ),
   );
 }

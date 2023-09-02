@@ -19,7 +19,7 @@ class TotalExpances extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double totalExpances = _total();
-    return Row(children: [Text('\$${totalExpances.toStringAsFixed(2)}',style: const TextStyle(color: Colors.white,fontSize: 30),)],);
+    return Row(children: [Text(totalExpances.toStringAsFixed(2)+"\€",style: const TextStyle(color: Colors.white,fontSize: 30),)],);
   }
 
 }
