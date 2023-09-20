@@ -6,14 +6,24 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: const Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            TextButton(onPressed: () {
-              
-            }, child: Text(é))
-          ],
+      body: SizedBox(
+        height: 50,
+        width: double.infinity,
+        child: ElevatedButton(
+          onPressed: () {},
+          child: const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                children: [Text("Name")],
+              ),
+              Row(
+                children: [
+                  Text("Bilal KHELLAF"),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
       appBar: PreferredSize(

@@ -50,7 +50,7 @@ void main() {
                   color: kColorScheme.onSecondaryContainer),
             ),
       ),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       home: MyHomePage(),
     ),
   );
