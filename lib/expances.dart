@@ -141,7 +141,7 @@ class _ExpancesState extends State<Expances> {
       body: width < 600
           ? Column(children: [
               Container(
-                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                color: Theme.of(context).cardTheme.color,
                 height: 120,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),

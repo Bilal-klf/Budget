@@ -1,11 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 
-class Contact extends StatelessWidget {
+class Contact extends StatefulWidget {
+  const Contact({super.key});
+
+  @override
+  State<Contact> createState() {
+    return _ContactState();
+  }
+}
+
+class _ContactState extends State<Contact> {
   final _nameController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _emailController = TextEditingController();
   final _subjectController = TextEditingController();
   final _messageController = TextEditingController();
+
+  sendEmail(context) async {
+    final Email email = Email(
+      body:
+          "Phone number : ${_phoneNumberController.text}\nName : ${_nameController.text}\nEmail : ${_emailController.text}\nMessage : ${_messageController.text}",
+      subject: _subjectController.text,
+      recipients: ['billalkhellaf@gmail.com'],
+      cc: [],
+      bcc: [],
+      attachmentPaths: [],
+      isHTML: false,
+    );
+    await FlutterEmailSender.send(email);
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        duration: Duration(seconds: 3),
+        content: Center(
+            child: Text(
+                "Your message has been transmitted to our client service", textAlign: TextAlign.center,)),
+      ),
+    );
+    clearText();
+    dispose();
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _phoneNumberController.dispose();
+    _emailController.dispose();
+    _subjectController.dispose();
+    _messageController.dispose();
+    super.dispose();
+  }
+
+  void clearText(){
+    _messageController.clear();
+    _subjectController.clear();
+    _phoneNumberController.clear();
+    _emailController.clear();
+    _nameController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +134,12 @@ class Contact extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    sendEmail(context);
+
+                  });
+                },
                 child: const Text("submit"),
               ),
             ],
@@ -92,7 +149,7 @@ class Contact extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
         child: AppBar(
-          title: Text("Contact"),
+          title: const Text("Contact"),
         ),
       ),
     );

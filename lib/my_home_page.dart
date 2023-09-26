@@ -21,6 +21,14 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: _pageNo[selectedPage],
       bottomNavigationBar: ConvexAppBar(
+        style: TabStyle.react,
+        height: 50,
+        top: -10,
+        //curveSize: 30,
+        elevation: 10,
+        //cornerRadius: 10,
+        backgroundColor: Theme.of(context).cardTheme.color,
+        color: Theme.of(context).iconTheme.color,
         items: const [
           TabItem(icon: Icons.home, title: 'Home'),
           TabItem(icon: Icons.message, title: 'Contact'),
