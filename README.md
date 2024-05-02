@@ -1,22 +1,14 @@
-# budget
+# Budget
+ This Flutter application allows users to manage their expenses efficiently. With a user-friendly interface, it provides various features to add, view, and categorize expenses effortlessly.
 
-A new Flutter project.
+# Features:
 
-## Getting Started
+1..**Add New Expense**: Users can add new expenses with details like title, amount, category, and date.
+    View Expenses: The app displays a list of all registered expenses, categorized for easy reference.
+    Edit and Delete: Users can edit or delete existing expenses as needed.
+    Categorization: Expenses are categorized into different types such as food, travel, etc., making it easier to track spending habits.
+    Responsive Design: The app is designed to work seamlessly across different screen sizes, ensuring a consistent user experience on both mobile and tablet devices.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-The Budget app simplify expances management and countability.
-
-you can add, delete, and modify your expances.
-
-this app is currently under development.
+2..**View Expenses**: The app displays a list of all registered expenses, categorized for easy reference.
+3..**ategorization**: Expenses are categorized into different types such as food, travel, etc., making it easier to track spending habits.
+4..**Responsive Design**: The app is designed to work seamlessly across different screen sizes, ensuring a consistent user experience on both mobile and tablet devices.
